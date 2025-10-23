@@ -26,7 +26,7 @@ liste_p* alloue_p()
   return r;
 }
 
-void non_vide_p(liste_p *l, void *str)
+void non_vide_p(liste_p *l, char *str)
 {
   if (l == NULL) {
     fprintf(stderr, "%s(): la liste_p "
@@ -53,4 +53,14 @@ liste_p* ajoute_p(liste_p *l, void *n)
   r->pointer = n;
   r->suivante = l;
   return r;
+}
+
+void liste_affiche_adresse(liste_p *l) //Created for printing to see if the functions is working
+{
+  while (!liste_est_vide_p(l))
+  {
+    printf(" %p", premier_p(l));
+    l = reste_p(l);
+  }
+  printf(".\n");
 }

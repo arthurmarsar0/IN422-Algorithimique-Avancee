@@ -15,3 +15,5 @@ premier_p(liste_p *l);
 liste_p*
 reste_p(liste_p *l);
 
+void liste_affiche_adresse(liste_p *l);
+
