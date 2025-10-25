@@ -3,20 +3,11 @@
 #include "tgc.h"
 #include "fusion.h"
 #include "liste_chainee_p.h"
+#include "parties.h"
 #include <stdio.h>
 
 tgc_t gc;
 
-
-void liste_affiche_p(liste_p *l) //Created for printing to see if the functions is working
-{
-  while (!liste_est_vide_p(l))
-  {
-    printf(" %p", premier_p(l));
-    l = reste_p(l);
-  }
-  printf(".\n");
-}
 
 void
 test()
@@ -73,8 +64,19 @@ test()
   l6 = ajoute_p(l6, p1);
   l6 = ajoute_p(l6, p2);
   l6 = ajoute_p(l6, p3);
-  liste_affiche_p(l6);
+  printf("Printing each pointer: %p %p %p\n", p3, p2, p1);
+  liste_affiche_adresse(l6);
 
+  //Testing parties.c with l2
+  printf("Étape 5:\n");
+  liste_p *partiesl2 = liste_vide_p(); 
+  partiesl2 = parties(l2);
+  /*
+  Está causando segFault em algum momento.
+  TODO: Colocar a questão no tradutor para ver se eu to realmente entendendo oq a questão pede
+  Ela quer q a gnt tire todos os subconjuntos de uma determinada lista?
+  */
+  liste_affiche_adresse(partiesl2);
 }
 
 
