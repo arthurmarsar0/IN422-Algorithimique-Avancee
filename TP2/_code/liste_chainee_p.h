@@ -17,3 +17,5 @@ reste_p(liste_p *l);
 
 void liste_affiche_adresse(liste_p *l);
 
+int liste_longueur_p(liste_p *l);
+

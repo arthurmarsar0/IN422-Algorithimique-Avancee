@@ -64,3 +64,15 @@ void liste_affiche_adresse(liste_p *l) //Created for printing to see if the func
   }
   printf(".\n");
 }
+
+int liste_longueur_p(liste_p *l){
+    int length = 0;
+    liste_p *next = l;
+
+    while(!liste_est_vide_p(next)){
+        length++;
+        next = reste_p(next);
+    }
+
+    return length;
+}

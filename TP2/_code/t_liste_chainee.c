@@ -4,6 +4,7 @@
 #include "fusion.h"
 #include "liste_chainee_p.h"
 #include "parties.h"
+#include "subset_sum.h"
 #include <stdio.h>
 
 tgc_t gc;
@@ -67,16 +68,48 @@ test()
   printf("Printing each pointer: %p %p %p\n", p3, p2, p1);
   liste_affiche_adresse(l6);
 
+  //Étape 5
   //Testing parties.c with l2
-  printf("Étape 5:\n");
-  liste_p *partiesl2 = liste_vide_p(); 
-  partiesl2 = parties(l2);
-  /*
-  Está causando segFault em algum momento.
-  TODO: Colocar a questão no tradutor para ver se eu to realmente entendendo oq a questão pede
-  Ela quer q a gnt tire todos os subconjuntos de uma determinada lista?
-  */
+  printf("\nÉtape 5:\n");
+  liste_p *partiesl2 = parties(l2);
+   int nombreDeParties = liste_longueur_p(partiesl2);
+  printf("Nombre de parties de l2 = {4, 1, 6} -> %d\n", nombreDeParties);
+
+  //Étape 6
+  printf("\nÉtape 6:\n");
   liste_affiche_adresse(partiesl2);
+
+  //Étape 7
+  printf("\nÉtape 7:\n");
+  //les funtions liste_somme et subset_sum sont sur le subset_sum.h
+
+  //testing liste_somme
+  int somme = liste_somme(l2);
+  printf("Somme de l2: %d\n", somme);
+
+  //Creation du set
+  liste *set = liste_vide();
+  set = ajoute(set, 3);
+  set = ajoute(set, 6);
+  set = ajoute(set, 7);
+  set = ajoute(set, 21);
+  set = ajoute(set, 43);
+  set = ajoute(set, 51);
+  set = ajoute(set, 126);
+
+  // En calculant les valeurs comprises entre 100 et 150,
+  //on peut les obtenir comme la somme des éléments d'un sous-ensemble de l'ensemble donné.
+  int max = 150;
+  int min = 100;
+  for(int i = min; i < max; i++){
+    liste *answer = subset_sum(set, i);
+    if(!liste_est_vide(answer)) {
+      printf("The number %d can be written as a sum of: ", i);
+      liste_affiche(answer);
+    }
+  }
+
+
 }
 
 

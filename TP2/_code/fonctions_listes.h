@@ -11,4 +11,3 @@ liste_affiche(liste* l);
 
 liste* 
 liste_concatene(liste *l1, liste *l2);
-
