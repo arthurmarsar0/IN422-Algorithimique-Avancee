@@ -8,7 +8,7 @@ liste_p* parties_aux(liste_p* accumulateur, liste* partielle, liste* restants){
     if(restants == NULL) {
         return ajoute_p(accumulateur, partielle);
     }
-    
+
     void *newRestants = liste_vide_p(); 
     int headValeur; 
 

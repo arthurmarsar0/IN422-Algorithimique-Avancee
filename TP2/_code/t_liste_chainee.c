@@ -57,6 +57,7 @@ test()
   liste_affiche(l4);
 
   // Testing the liste_chainee_p
+  printf("\nÉtape 4\n");
   liste_p *l6 = liste_vide_p();
   int variable1 = 5;
   char variable2 = 'A';
@@ -66,7 +67,12 @@ test()
   l6 = ajoute_p(l6, p2);
   l6 = ajoute_p(l6, p3);
   printf("Printing each pointer: %p %p %p\n", p3, p2, p1);
+  printf("Printing the full list: ");
   liste_affiche_adresse(l6);
+  printf("Printing header: %p\n", premier_p(l6));
+  printf("Printing the rest: ");
+  liste_affiche_adresse(reste_p(l6));
+
 
   //Étape 5
   //Testing parties.c with l2
@@ -102,7 +108,7 @@ test()
   int max = 150;
   int min = 100;
   for(int i = min; i < max; i++){
-    liste *answer = subset_sum(set, i);
+    liste *answer = (liste*)subset_sum(set, i);
     if(!liste_est_vide(answer)) {
       printf("The number %d can be written as a sum of: ", i);
       liste_affiche(answer);
