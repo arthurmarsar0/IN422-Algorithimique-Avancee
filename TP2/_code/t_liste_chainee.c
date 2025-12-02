@@ -107,7 +107,7 @@ test()
   //on peut les obtenir comme la somme des éléments d'un sous-ensemble de l'ensemble donné.
   int max = 150;
   int min = 100;
-  for(int i = min; i < max; i++){
+  for(int i = min; i < max + 1; i++){
     liste *answer = (liste*)subset_sum(set, i);
     if(!liste_est_vide(answer)) {
       printf("The number %d can be written as a sum of: ", i);

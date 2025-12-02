@@ -10,7 +10,7 @@ liste *fusion(liste *l1, liste*l2){
     liste *result = liste_vide();
     int premier1, premier2;
 
-    for(int i = 0; i < length1 + length2; i++){ //TODO: Add a flag to se if is possible to make a control flag to just link both lists insted of going one by one.
+    for(int i = 0; i < length1 + length2; i++){ 
         if(!liste_est_vide(l1)) premier1 = premier(l1);
         if(!liste_est_vide(l2)) premier2 = premier(l2);
 
@@ -34,10 +34,8 @@ liste *fusion(liste *l1, liste*l2){
 }
 
 liste *tri_fusion(liste *l){
-    //Quebra da recursão
     if(liste_longueur(l) == 1) return l;
 
-    //Criar cada lista pela metade
     int length = liste_longueur(l);
     liste *lfh, *lsh; //lfh - liste first half, lsh - liste second half
     lfh = liste_vide();
@@ -55,11 +53,7 @@ liste *tri_fusion(liste *l){
         i++;
         l = reste(l);
     }
-    // liste_affiche(lfh);
-    // liste_affiche(lsh);
 
-
-    //recursão
     lfh = tri_fusion(lfh);
     lsh = tri_fusion(lsh);
     l = fusion(lfh, lsh);
