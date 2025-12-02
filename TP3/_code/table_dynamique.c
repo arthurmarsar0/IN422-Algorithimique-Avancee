@@ -68,3 +68,12 @@ table_dynamique_libere(table_dynamique *t)
   free(t);
 }
 
+void table_dynamique_affiche(table_dynamique *t){
+  printf("Taille du table_dynamique: %d\n", t->taille);
+
+  printf("Tableau: [");
+  for(int i = 0; i < t->taille; i++){
+    printf(" %d", table_dynamique_acces(t, i));
+  }
+  printf("]\n");
+}

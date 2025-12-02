@@ -25,19 +25,17 @@ table_dynamique.o: table_dynamique.h table_dynamique.c utilitaires.h
 
 arbre_implicite.o: arbre_implicite.h arbre_implicite.c table_dynamique.h utilitaires.h
 
-
 tas.o: tas.h tas.c arbre_implicite.h table_dynamique.h utilitaires.h
 
 # Modules pour executables
 
-
-
+t_table_dynamique.o: t_table_dynamique.c table_dynamique.h tgc.h utilitaires.h
 
 ###
 # Edition de liens
 ###
 
-
+t_table_dynamique: t_table_dynamique.o table_dynamique.o tgc.o utilitaires.o
 
 clean:
 	rm $(TARGETS) *.o
