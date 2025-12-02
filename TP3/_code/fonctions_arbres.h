@@ -5,13 +5,10 @@
 void
 arbre_affiche(arbre* a);
 
-//void
-//arbre_source_c(arbre *a);
+void arbre_source_c(arbre *a);
 
 int arbre_profondeur(arbre *a);
 
-//int
-//arbre_nombre_elements(arbre *a);
+int arbre_nombre_elements(arbre *a);
 
-//liste* 
-//arbre_elements(arbre *a);
+liste* arbre_elements(arbre *a);
