@@ -29,10 +29,57 @@ int abr_cherche(abr *a, int n){ //0 il n'y a pas, 1 il'y a
 abr* abr_insere(abr *a, int n){
     if(arbre_est_vide(a)) return arbre_constructeur(n, NULL, NULL);
 
-    else if(n < arbre_valeur(a)){
+    else if(n <= arbre_valeur(a)){
         return arbre_constructeur(arbre_valeur(a), abr_insere(arbre_gauche(a), n),arbre_droit(a));
     } else {
         return arbre_constructeur(arbre_valeur(a),arbre_gauche(a), abr_insere(arbre_droit(a), n));
     }
 
+}
+
+int abr_max_aux(abr *a){
+    if(est_abr_vide(arbre_droit(a))) return arbre_valeur(a);
+    else return abr_max_aux(arbre_droit(a));
+}
+
+int abr_max(abr *a){
+    if(est_abr_vide(a)) {
+        exit(1);
+    }
+
+    int result = abr_max_aux(a);
+    return result;
+}
+
+abr* abr_retire(abr *a, int n){
+    if(est_abr_vide(a)){
+        printf("Abr vide\n");
+        exit(1);
+    } else if(abr_cherche(a, n) == 0){
+        printf("Element %d est pas sur cet arbre\n", n);
+        exit(1);
+    }
+
+    // printf("valeur: %d || n: %d\n", arbre_valeur(a), n);
+    if(arbre_valeur(a) == n){
+        // printf("achou\n");
+        if(!est_abr_vide(arbre_gauche(a))) {
+            abr* a_gauche = arbre_gauche(a);
+            if (abr_cherche(a_gauche, n) == 1){ //removing all instances of that value -- Still needs fixing
+                a_gauche = abr_retire(a_gauche, n);
+                printf("Result of inner function: \n");
+                arbre_affiche(a_gauche);
+            } 
+            int max = abr_max(a_gauche);
+            return arbre_constructeur(max, abr_retire(a_gauche, max), arbre_droit(a));
+        }
+        else if (!est_abr_vide(arbre_droit(a))) return arbre_constructeur(arbre_valeur(arbre_droit(a)), arbre_gauche(arbre_droit(a)), arbre_droit(arbre_droit(a))); //If arbre_gauche is empty, just copy what is the rigth side.
+        else return arbre_vide();
+    } else if (n < arbre_valeur(a)){
+        // printf("esquerda\n");
+        return arbre_constructeur(arbre_valeur(a), abr_retire(arbre_gauche(a), n), arbre_droit(a));
+    } else {
+        // printf("direita\n");
+        return arbre_constructeur(arbre_valeur(a), arbre_gauche(a), abr_retire(arbre_droit(a), n));
+    }
 }
