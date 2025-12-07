@@ -2,6 +2,7 @@
 #include "fonctions_arbres.h"
 #include "liste_chainee.h"
 #include "fonctions_listes.h"
+#include "abr.h"
 #include "tgc.h"
 #include <stdio.h>
 
@@ -30,6 +31,17 @@ void test(){
     liste *l = arbre_elements(a4);
     liste_affiche(l);
 
+    //testing cherche function
+    abr *a = a4;
+    printf("\nEst-que un valeur etre sur cette arbre? (1 oui, 0 pas)\n");
+    printf("3: %d\n", abr_cherche(a4, 3));
+    printf("6: %d\n\n", abr_cherche(a4, 6));
+
+    //Testing insere function
+    abr *teste = abr_insere(a, 6);
+    teste = abr_insere(teste, 4);
+    teste = abr_insere(teste, 5);
+    arbre_affiche(teste);
 }
 
 int

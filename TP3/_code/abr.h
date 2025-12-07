@@ -8,8 +8,7 @@ abr_vide();
 
 int abr_cherche(abr *a, int n);
 
-//abr*
-//abr_insere(abr *a, int n);
+abr* abr_insere(abr *a, int n);
 
 //abr*
 //abr_retire(abr *a, int n);
