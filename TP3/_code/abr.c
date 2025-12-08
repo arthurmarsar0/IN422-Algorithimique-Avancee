@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "abr.h"
 #include "fonctions_arbres.h"
+#include "liste_chainee.h"
 
 abr*
 abr_vide()
@@ -82,4 +84,24 @@ abr* abr_retire(abr *a, int n){
         // printf("direita\n");
         return arbre_constructeur(arbre_valeur(a), arbre_gauche(a), abr_retire(arbre_droit(a), n));
     }
+}
+
+int tentative(int n){
+
+    abr* dates = arbre_vide();
+    for(int i = 0; i < n; i++){
+        int date = rand() % 365;
+        dates = abr_insere(dates, date);
+    }
+    // arbre_affiche(dates);
+
+    liste *l = arbre_elements(dates);
+    // liste_affiche(l);
+
+    while(!liste_est_vide(reste(l))){
+        // printf("%d e %d \n", premier(l), premier(reste(l)));
+        if(premier(l) == premier(reste(l))) return 1;
+        l = reste(l);
+    }
+    return 0;
 }

@@ -17,7 +17,7 @@ fonctions_listes.o: liste_chainee.h fonctions_listes.h fonctions_listes.c tgc.h
 arbre.o: arbre.h arbre.c tgc.h
 fonctions_arbres.o: arbre.h fonctions_arbres.h fonctions_arbres.c tgc.h
 
-abr.o: abr.h abr.c tgc.h arbre.h fonctions_arbres.h
+abr.o: abr.h abr.c tgc.h arbre.h fonctions_arbres.h liste_chainee.h
 
 utilitaires.o: utilitaires.h utilitaires.c
 

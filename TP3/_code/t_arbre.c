@@ -5,6 +5,8 @@
 #include "abr.h"
 #include "tgc.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 tgc_t gc;
 
@@ -93,15 +95,34 @@ void test(){
     abr* c_wo_3 = abr_retire(c, 2);
     arbre_affiche(c_wo_3);
 
-    /* abr_retire() still doesn't work for trees with duplicates -- still working on that
+    // abr_retire() still doesn't work for trees with duplicates -- still working on that
     printf("\nCreating a tree with duplicates for testing\n");
     abr* dup = arbre_constructeur(10, arbre_constructeur(10, arbre_vide(), arbre_vide()), arbre_constructeur(11, arbre_vide(), arbre_vide()));
     arbre_affiche(dup);
    
-    printf("\nRemoving 10 from tree that has duplicates\n");
-    abr* dup_wo_10 = abr_retire(dup, 10);
-    arbre_affiche(dup_wo_10);
-    */
+    liste* l2 = arbre_elements(teste);
+    liste_affiche(l2);
+    // printf("\nRemoving 10 from tree that has duplicates\n");
+    // abr* dup_wo_10 = abr_retire(dup, 10);
+    // arbre_affiche(dup_wo_10);
+
+    // srand(time(NULL)); //For being really random
+    float prob = 0, times = 10000;
+    float probabilites[11];
+    for(int qnt = 20; qnt<31; qnt++){
+      prob = 0;
+      for(int i = 0; i < times; i++){
+        // printf("%d - ", i);
+        prob += tentative(qnt) / times;
+      }
+      probabilites[qnt - 20] = prob;
+      printf("%d - prob: %.2f\n", qnt, prob);
+    }
+
+    for(int i = 0; i < 11; i++){
+      printf("%.2f ",probabilites[i]);
+    }
+    printf("\n");
 }
 
 int
