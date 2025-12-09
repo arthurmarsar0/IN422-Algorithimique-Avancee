@@ -38,6 +38,8 @@ void test(){
 
     //testing cherche function
     abr *a = a4;
+    printf("Arbre a:\n");
+    arbre_affiche(a);
     printf("\nEst-que un valeur etre sur l'arbre a? (1 oui, 0 pas)\n");
     printf("3: %d\n", abr_cherche(a4, 3));
     printf("6: %d\n\n", abr_cherche(a4, 6));
@@ -95,16 +97,15 @@ void test(){
     abr* c_wo_3 = abr_retire(c, 2);
     arbre_affiche(c_wo_3);
 
-    // abr_retire() still doesn't work for trees with duplicates -- still working on that
+    // testing with duplicates
     printf("\nCreating a tree with duplicates for testing\n");
     abr* dup = arbre_constructeur(10, arbre_constructeur(10, arbre_vide(), arbre_vide()), arbre_constructeur(11, arbre_vide(), arbre_vide()));
     arbre_affiche(dup);
-   
-    liste* l2 = arbre_elements(teste);
-    liste_affiche(l2);
-    // printf("\nRemoving 10 from tree that has duplicates\n");
-    // abr* dup_wo_10 = abr_retire(dup, 10);
-    // arbre_affiche(dup_wo_10);
+
+    dup = abr_retire(dup, 10);
+    printf("\ndup without 10 and its duplicates\n");
+    arbre_affiche(dup);
+ 
 
     // srand(time(NULL)); //For being really random
     float prob = 0, times = 10000;
