@@ -3,6 +3,8 @@
 #include "liste_chainee.h"
 #include "fonctions_listes.h"
 #include "abr.h"
+#include "arbre_implicite.h"
+#include "fonctions_arbres_implicites.h"
 #include "tgc.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -106,24 +108,45 @@ void test(){
     printf("\ndup without 10 and its duplicates\n");
     arbre_affiche(dup);
  
+    // float prob = 0, times = 10000;
+    // float probabilites[11];
+    // for(int qnt = 20; qnt<31; qnt++){
+    //   prob = 0;
+    //   for(int i = 0; i < times; i++){
+    //     // printf("%d - ", i);
+    //     prob += tentative(qnt) / times;
+    //   }
+    //   probabilites[qnt - 20] = prob;
+    //   printf("%d - prob: %.2f\n", qnt, prob);
+    // }
 
-    // srand(time(NULL)); //For being really random
-    float prob = 0, times = 10000;
-    float probabilites[11];
-    for(int qnt = 20; qnt<31; qnt++){
-      prob = 0;
-      for(int i = 0; i < times; i++){
-        // printf("%d - ", i);
-        prob += tentative(qnt) / times;
-      }
-      probabilites[qnt - 20] = prob;
-      printf("%d - prob: %.2f\n", qnt, prob);
-    }
+    // for(int i = 0; i < 11; i++){
+    //   printf("%.2f ",probabilites[i]);
+    // }
+    // printf("\n");
 
-    for(int i = 0; i < 11; i++){
-      printf("%.2f ",probabilites[i]);
+    //abi for testing
+    abi* abi_test = abi_vide();
+    
+    abi_ajoute(abi_test, 1);
+    abi_ajoute(abi_test, 2);
+    abi_ajoute(abi_test, 3);
+    abi_ajoute(abi_test, 4);
+    abi_ajoute(abi_test, 5);
+
+    //Going through the table to see if it is being stored
+    printf("\nIn an array: ");
+    for(int i = 0; i < abi_index_dernier(abi_test) + 1; i++){
+      printf("%d ", abi_acces(abi_test, i));
     }
     printf("\n");
+
+    //testing abi_vers_arbre
+    arbre* abi_to_arbre = abi_vers_arbre(abi_test); 
+    printf("Abi_test as an binary tree\n");
+    arbre_affiche(abi_to_arbre);
+
+    abi_libere(abi_test);
 }
 
 int

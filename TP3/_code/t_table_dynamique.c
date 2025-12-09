@@ -6,23 +6,17 @@ tgc_t gc;
 
 void test(){
 
-    //Calculer which Fibonnacci's index becomes greater then 1.000.000.000 (Un milliard)
+    //Calculeate with which Fibonnacci's index the value becomes greater then 1.000.000.000 (Un milliard)
 
     //Doing the base
     table_dynamique *Fib = table_dynamique_vide();
 
+    printf("Base\n");
     table_dynamique_insere(Fib, 0, 0);
     table_dynamique_insere(Fib, 1, 1);
 
     //Checking if base is right
     table_dynamique_affiche(Fib);
-
-    //testing for fib-10
-    // for(int i = 2; i < 10; i++){
-        // int pred1 = table_dynamique_acces(Fib, i - 1);
-        // int pred2 = table_dynamique_acces(Fib, i - 2);
-    //     table_dynamique_insere(Fib, i, pred1 + pred2);
-    // }
 
     int i = 2;
     int compare = 1000000000; //easier to test

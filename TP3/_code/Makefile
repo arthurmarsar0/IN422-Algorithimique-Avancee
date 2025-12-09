@@ -24,20 +24,21 @@ utilitaires.o: utilitaires.h utilitaires.c
 table_dynamique.o: table_dynamique.h table_dynamique.c utilitaires.h
 
 arbre_implicite.o: arbre_implicite.h arbre_implicite.c table_dynamique.h utilitaires.h
+fonctions_arbres_implicites.o: fonctions_arbres_implicites.h fonctions_arbres_implicites.c arbre.h arbre_implicite.h table_dynamique.h utilitaires.h
 
 tas.o: tas.h tas.c arbre_implicite.h table_dynamique.h utilitaires.h
 
 # Modules pour executables
 
 t_table_dynamique.o: t_table_dynamique.c table_dynamique.h tgc.h utilitaires.h
-t_arbre.o: t_arbre.c arbre.h fonctions_arbres.h tgc.h liste_chainee.h fonctions_listes.h abr.h
+t_arbre.o: t_arbre.c arbre.h fonctions_arbres.h tgc.h liste_chainee.h fonctions_listes.h abr.h arbre_implicite.h fonctions_arbres_implicites.h table_dynamique.h tgc.h utilitaires.h
 
 ###
 # Edition de liens
 ###
 
 t_table_dynamique: t_table_dynamique.o table_dynamique.o tgc.o utilitaires.o
-t_arbre: t_arbre.o arbre.o fonctions_arbres.o tgc.o liste_chainee.o fonctions_listes.o abr.o
+t_arbre: t_arbre.o arbre.o fonctions_arbres.o tgc.o liste_chainee.o fonctions_listes.o abr.o arbre_implicite.o fonctions_arbres_implicites.o table_dynamique.o tgc.o utilitaires.o
 
 clean:
 	rm $(TARGETS) *.o
