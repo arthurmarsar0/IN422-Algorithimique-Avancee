@@ -32,5 +32,5 @@ if __name__ == "__main__":
     #test_dfs()
     #test_accessibles()
     #test_cfc()
-    #test_quotient()
+    test_quotient()
 
